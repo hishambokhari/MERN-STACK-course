@@ -1,0 +1,22 @@
+{
+  "name": "mern-stack-course",
+  "version": "1.0.0",
+  "description": "awesome app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hishambokhari/MERN-STACK-course.git"
+  },
+  "author": "hisham bokhari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hishambokhari/MERN-STACK-course/issues"
+  },
+  "homepage": "https://github.com/hishambokhari/MERN-STACK-course#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
