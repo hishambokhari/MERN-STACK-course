@@ -5,20 +5,10 @@ const port = 5000
 // serving static files
 app.use(express.static('public'))
 
-// '/' Route
-app.get('/',(req, res)=>{
-    res.sendFile(__dirname + '/index.html')
-})
+// import routes 
+require('./routes')(app);
 
-// '/About' route
-app.get('/about',(req, res)=>{
-    res.send("This is the about page")
-})
-
-// '/Home' route
-app.get('/home',(req, res)=>{
-    res.send({msg:"walalalala"})
-})
+app.set('view engine','ejs')
 
 app.listen(port,()=>{
     console.log("server is running on port " + port)
