@@ -15,7 +15,7 @@
    
      <ul>
          <% wish.forEach(item=>{ %>
-               <li><%= item %></li>
+          <li onClick="deleteme(this)"><%= item %></li>
           <%  }) %>
      </ul>
 
@@ -36,6 +36,16 @@
             body:data,
            
         }).then(res=>res.json())
+        .then(res2 => {
+             console.log(res2)
+             location.reload()
+        }); 
+     }
+
+     function deleteme(item){
+          fetch("http://localhost:5000/remove/"+item.innerText,{
+               method:"delete"
+          }).then(res=>res.json())
         .then(res2 => {
              console.log(res2)
              location.reload()
