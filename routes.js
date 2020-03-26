@@ -2,27 +2,28 @@ const express = require('express');
 const app = express();
 
 
-data = {
-    name:"hisham",
-    status:"programmer"
-}
+const data = ['code','sleep','eat']
+
 
 module.exports = (app)=>{
 
 
     app.get('/',(req, res)=>{
-        res.render('home',{data:data})
+        res.render('home',{wish:data})
     })
     
     
     app.get('/about',(req, res)=>{
-        res.send("This is the about page")
+        res.render("about")
     })
 
-    app.get('/profile/:id',(req,res)=>{
-        res.send("you are requested user no " + req.params.id)
+    app.post('/sent',(req,res)=>{
+        console.log(req.body.item)
+        data.push(req.body.item)
+        res.send(data)
     })
+    
 }
 
 
-hh
+
