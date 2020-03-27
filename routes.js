@@ -4,17 +4,21 @@ const mongoose = require('mongoose');
 const {mongourl} = require('./config/keys')
 const Wish = require('./models/wish');
 
-var data = ['code','sleep'];
 
 
-mongoose.connect(mongourl);
+mongoose.connect(mongourl, {useNewUrlParser: true});
 
 
 module.exports = (app)=>{
 
 // get routes
     app.get('/',(req, res)=>{
-        res.render('home',{wish:data})
+        Wish.find({}).then(data=>{
+            console.log(data)
+            res.render('home',{wish:data})
+
+        })
+        
     })
     
     
@@ -29,6 +33,7 @@ module.exports = (app)=>{
         });
         Item.save().then(data=>{
             console.log('saved')
+            res.send(data)
         }).catch(err=>{
             throw err;
         })
@@ -39,13 +44,13 @@ module.exports = (app)=>{
 
     app.delete('/remove/:id',(req,res)=>{
 
-       data = data.map(item=>{
-            if(item!=req.params.id){
-                return item
-            }
+
+        Wish.findOneAndDelete({wish:req.params.id}).then(data=>{
+            console.log("deleted")
+            res.send(data)
         })
-        console.log('Deleted',req.params.id)
-        res.send(data)
+    
+        
     })
 
 
