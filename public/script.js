@@ -1,6 +1,6 @@
 document.getElementById("myForm").onsubmit =(e)=>{
   e.preventDefault();
-    const url = "http://localhost:5000/sent";
+    const url = "/sent";
 
     var data = new URLSearchParams();
      console.log(e.target)
@@ -21,7 +21,7 @@ document.getElementById("myForm").onsubmit =(e)=>{
  }
 
  function deleteme(item){
-      fetch("http://localhost:5000/remove/"+item.innerText,{
+      fetch("/remove/"+item.innerText,{
            method:"delete"
       }).then(res=>res.json())
     .then(res2 => {
