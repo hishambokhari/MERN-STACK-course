@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
-
+const mongoose = require('mongoose');
+const {mongourl} = require('./config/keys')
+const Wish = require('./models/wish');
 
 var data = ['code','sleep'];
+
+
+mongoose.connect(mongourl);
 
 
 module.exports = (app)=>{
@@ -18,9 +23,16 @@ module.exports = (app)=>{
     })
     // post routes
     app.post('/sent',(req,res)=>{
-        console.log(req.body.item)
-        data.push(req.body.item)
-        res.send(data)
+
+        const Item = new Wish({
+            wish:req.body.item
+        });
+        Item.save().then(data=>{
+            console.log('saved')
+        }).catch(err=>{
+            throw err;
+        })
+
     })
     
     // delete routes
