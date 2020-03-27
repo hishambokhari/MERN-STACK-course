@@ -6,3 +6,7 @@ body{
 li{
     font-size: 20px;
 }
+li:hover{
+    font-size: 20px;
+    text-decoration: line-through;
+}

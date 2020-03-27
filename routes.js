@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const {mongourl} = require('./config/keys')
-const Wish = require('./models/wish');
+// const Wish = require('./models/wish');
 
+const Wish = mongoose.model('wishes');
 
 
 mongoose.connect(mongourl, {useNewUrlParser: true});

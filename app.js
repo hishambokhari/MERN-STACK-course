@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
-const port = 5000
+const port = process.env.PORT || 5000
 const bodyParser = require('body-parser')
 
 // serving static files
 app.use(express.static('public'))
 
+require('./models/wish')
+
 // parse application/x-www-form-urlencoded
+
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // import routes 
